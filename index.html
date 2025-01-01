@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      margin-top: 10%;
+    }
+
+    .gift-button {
+      background-color: #ff5733;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .gift-button:hover {
+      background-color: #c44129;
+    }
+
+    #content {
+      display: none;
+    }
+
+    #image-container img {
+      width: 30%;
+      border: 3px solid white;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      animation: float 3s infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="gift-button" id="open-gift">Open the Gift</button>
+
+    <div id="content">
+      <h1>🎉 Happy New Year! 🎉</h1>
+      <h3>Wishing you a year filled with joy, success, and endless happiness! May this year bring new opportunities, cherished moments, and the courage to chase your dreams. Let's make this New Year unforgettable!</h3>
+
+      <div id="image-container">
+        <img src="download.jpg" alt="New Year Image">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = `${Math.random() * 100}vw`;
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 5000);
+    }
+
+    setInterval(createBalloon, 500);
+
+    document.getElementById("open-gift").addEventListener("click", function() {
+      const content = document.getElementById("content");
+      const button = document.getElementById("open-gift");
+
+      // Hide the button and show the content
+      button.style.display = "none";
+      content.style.display = "block";
+    });
+  </script>
+</body>
+</html>
